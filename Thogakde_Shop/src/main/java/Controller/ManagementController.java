@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Management {
+public class ManagementController {
     Stage stage = new Stage();
 
     @FXML

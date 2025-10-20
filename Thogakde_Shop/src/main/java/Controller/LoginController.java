@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginFormController {
+public class LoginController {
 
     @FXML
     public PasswordField txtPassword;

@@ -30,20 +30,32 @@
                 <TableColumn fx:id="col_postal_code" prefWidth="96.7999267578125" text="Postal Code" />
             </columns>
         </TableView>
-        <TextField fx:id="txtCustId" layoutX="20.0" layoutY="426.0" prefHeight="26.0" prefWidth="84.0" promptText="Customer ID" />
-        <TextField fx:id="txtTitle" layoutX="120.0" layoutY="426.0" prefHeight="26.0" prefWidth="114.0" promptText="Title" />
-        <TextField fx:id="txtName" layoutX="249.0" layoutY="426.0" prefHeight="26.0" prefWidth="294.0" promptText="Name" />
-        <TextField fx:id="txtSalary" layoutX="761.0" layoutY="426.0" prefHeight="26.0" prefWidth="130.0" promptText="Salary" />
-        <DatePicker fx:id="txtDOB" layoutX="565.0" layoutY="426.0" prefHeight="26.0" prefWidth="183.0" />
-        <TextField fx:id="txtAddress" layoutX="20.0" layoutY="469.0" prefHeight="26.0" prefWidth="433.0" promptText="Address" />
-        <TextField fx:id="txtCity" layoutX="470.0" layoutY="469.0" prefHeight="26.0" prefWidth="123.0" promptText="City" />
-        <TextField fx:id="txtPostalCode" layoutX="776.0" layoutY="469.0" prefHeight="26.0" prefWidth="114.0" promptText="Postal Code" />
-        <ChoiceBox fx:id="txtProvince" layoutX="614.0" layoutY="469.0" prefHeight="26.0" prefWidth="146.0" />
-        <Button layoutX="20.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="91.0" text="ADD" />
-        <Button layoutX="131.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="26.0" prefWidth="91.0" text="UPDATE" />
-        <Button layoutX="249.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="26.0" prefWidth="91.0" text="DELETE" />
-        <Button layoutX="457.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnItemManage" prefHeight="26.0" prefWidth="114.0" text="Item Management" />
-        <Button layoutX="587.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnSupplierManage" prefHeight="26.0" prefWidth="138.0" text="Supplier Management" />
-        <Button layoutX="743.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnEmployeeManage" prefHeight="26.0" prefWidth="146.0" text="Employee Management" />
+        <TextField fx:id="txtCustId" layoutX="20.0" layoutY="426.0" prefHeight="26.0" prefWidth="84.0" promptText="Customer ID" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtTitle" layoutX="120.0" layoutY="426.0" prefHeight="26.0" prefWidth="114.0" promptText="Title" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtName" layoutX="249.0" layoutY="426.0" prefHeight="26.0" prefWidth="294.0" promptText="Name" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtSalary" layoutX="761.0" layoutY="426.0" prefHeight="26.0" prefWidth="130.0" promptText="Salary" style="-fx-background-color: grey;" />
+        <DatePicker fx:id="txtDOB" layoutX="565.0" layoutY="426.0" prefHeight="26.0" prefWidth="183.0" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtAddress" layoutX="20.0" layoutY="469.0" prefHeight="26.0" prefWidth="433.0" promptText="Address" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtCity" layoutX="470.0" layoutY="469.0" prefHeight="26.0" prefWidth="123.0" promptText="City" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtPostalCode" layoutX="776.0" layoutY="469.0" prefHeight="26.0" prefWidth="114.0" promptText="Postal Code" style="-fx-background-color: grey;" />
+        <ChoiceBox fx:id="txtProvince" layoutX="614.0" layoutY="469.0" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: grey;" />
+        <Button layoutX="20.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: cyan;" text="ADD">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="131.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #05fa42;" text="UPDATE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="249.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: red;" text="DELETE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="457.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnItemManage" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: #03dffc;" text="Item Management" />
+        <Button layoutX="587.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnSupplierManage" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #03dffc;" text="Supplier Management" />
+        <Button layoutX="743.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnEmployeeManage" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #03dffc;" text="Employee Management" />
     </children>
 </AnchorPane>
