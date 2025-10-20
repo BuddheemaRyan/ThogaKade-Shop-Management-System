@@ -10,56 +10,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="575.0" prefWidth="921.0" style="-fx-background-color: black;"
-            xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.CustomerController">
+<AnchorPane prefHeight="575.0" prefWidth="921.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
     <children>
         <Label layoutX="382.0" layoutY="28.0" text="Customer Form" textFill="WHITE">
             <font>
-                <Font name="AHFox" size="23.0"/>
+                <Font name="AHFox" size="23.0" />
             </font>
         </Label>
-        <TableView fx:id="tblCustomer" layoutX="14.0" layoutY="90.0" prefHeight="314.0" prefWidth="898.0"
-                   style="-fx-background-color: grey;">
+        <TableView fx:id="tblCustomer" layoutX="14.0" layoutY="90.0" prefHeight="314.0" prefWidth="898.0" style="-fx-background-color: grey;">
             <columns>
-                <TableColumn fx:id="col_cust_id" prefWidth="61.600006103515625" text="Cust ID"/>
-                <TableColumn fx:id="col_title" prefWidth="79.19998168945312" text="Title"/>
-                <TableColumn fx:id="col_name" prefWidth="87.99996948242188" text="Name"/>
-                <TableColumn fx:id="col_dob" prefWidth="88.0" text="DOB"/>
-                <TableColumn fx:id="col_salary" prefWidth="87.20001220703125" text="Salary"/>
-                <TableColumn fx:id="col_address" prefWidth="178.39999389648438" text="Address"/>
-                <TableColumn fx:id="col_city" prefWidth="101.60003662109375" text="City"/>
-                <TableColumn fx:id="col_province" prefWidth="113.60003662109375" text="Province"/>
-                <TableColumn fx:id="col_postal_code" prefWidth="96.7999267578125" text="Postal Code"/>
+                <TableColumn fx:id="col_cust_id" prefWidth="61.600006103515625" text="Cust ID" />
+                <TableColumn fx:id="col_title" prefWidth="79.19998168945312" text="Title" />
+                <TableColumn fx:id="col_name" prefWidth="87.99996948242188" text="Name" />
+                <TableColumn fx:id="col_dob" prefWidth="88.0" text="DOB" />
+                <TableColumn fx:id="col_salary" prefWidth="87.20001220703125" text="Salary" />
+                <TableColumn fx:id="col_address" prefWidth="178.39999389648438" text="Address" />
+                <TableColumn fx:id="col_city" prefWidth="101.60003662109375" text="City" />
+                <TableColumn fx:id="col_province" prefWidth="113.60003662109375" text="Province" />
+                <TableColumn fx:id="col_postal_code" prefWidth="96.7999267578125" text="Postal Code" />
             </columns>
         </TableView>
-        <TextField fx:id="txtCustId" layoutX="20.0" layoutY="426.0" prefHeight="26.0" prefWidth="84.0"
-                   promptText="Customer ID"/>
-        <TextField fx:id="txtTitle" layoutX="120.0" layoutY="426.0" prefHeight="26.0" prefWidth="114.0"
-                   promptText="Title"/>
-        <TextField fx:id="txtName" layoutX="249.0" layoutY="426.0" prefHeight="26.0" prefWidth="294.0"
-                   promptText="Name"/>
-        <TextField fx:id="txtSalary" layoutX="761.0" layoutY="426.0" prefHeight="26.0" prefWidth="130.0"
-                   promptText="Salary"/>
-        <DatePicker fx:id="txtDOB" layoutX="565.0" layoutY="426.0" prefHeight="26.0" prefWidth="183.0"/>
-        <TextField fx:id="txtAddress" layoutX="20.0" layoutY="469.0" prefHeight="26.0" prefWidth="433.0"
-                   promptText="Address"/>
-        <TextField fx:id="txtCity" layoutX="470.0" layoutY="469.0" prefHeight="26.0" prefWidth="123.0"
-                   promptText="City"/>
-        <TextField fx:id="txtPostalCode" layoutX="776.0" layoutY="469.0" prefHeight="26.0" prefWidth="114.0"
-                   promptText="Postal Code"/>
-        <ChoiceBox fx:id="txtProvince" layoutX="614.0" layoutY="469.0" prefHeight="26.0" prefWidth="146.0"/>
-        <Button layoutX="20.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0"
-                prefWidth="91.0" text="ADD"/>
-        <Button layoutX="131.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="26.0"
-                prefWidth="91.0" text="UPDATE"/>
-        <Button layoutX="249.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="26.0"
-                prefWidth="91.0" text="DELETE"/>
-        <Button layoutX="457.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnItemManage" prefHeight="26.0"
-                prefWidth="114.0" text="Item Management"/>
-        <Button layoutX="587.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnSupplierManage" prefHeight="26.0"
-                prefWidth="138.0" text="Supplier Management"/>
-        <Button layoutX="743.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnEmployeeManage" prefHeight="26.0"
-                prefWidth="146.0" text="Employee Management"/>
+        <TextField fx:id="txtCustId" layoutX="20.0" layoutY="426.0" prefHeight="26.0" prefWidth="84.0" promptText="Customer ID" />
+        <TextField fx:id="txtTitle" layoutX="120.0" layoutY="426.0" prefHeight="26.0" prefWidth="114.0" promptText="Title" />
+        <TextField fx:id="txtName" layoutX="249.0" layoutY="426.0" prefHeight="26.0" prefWidth="294.0" promptText="Name" />
+        <TextField fx:id="txtSalary" layoutX="761.0" layoutY="426.0" prefHeight="26.0" prefWidth="130.0" promptText="Salary" />
+        <DatePicker fx:id="txtDOB" layoutX="565.0" layoutY="426.0" prefHeight="26.0" prefWidth="183.0" />
+        <TextField fx:id="txtAddress" layoutX="20.0" layoutY="469.0" prefHeight="26.0" prefWidth="433.0" promptText="Address" />
+        <TextField fx:id="txtCity" layoutX="470.0" layoutY="469.0" prefHeight="26.0" prefWidth="123.0" promptText="City" />
+        <TextField fx:id="txtPostalCode" layoutX="776.0" layoutY="469.0" prefHeight="26.0" prefWidth="114.0" promptText="Postal Code" />
+        <ChoiceBox fx:id="txtProvince" layoutX="614.0" layoutY="469.0" prefHeight="26.0" prefWidth="146.0" />
+        <Button layoutX="20.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="91.0" text="ADD" />
+        <Button layoutX="131.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="26.0" prefWidth="91.0" text="UPDATE" />
+        <Button layoutX="249.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="26.0" prefWidth="91.0" text="DELETE" />
+        <Button layoutX="457.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnItemManage" prefHeight="26.0" prefWidth="114.0" text="Item Management" />
+        <Button layoutX="587.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnSupplierManage" prefHeight="26.0" prefWidth="138.0" text="Supplier Management" />
+        <Button layoutX="743.0" layoutY="515.0" mnemonicParsing="false" onAction="#btnEmployeeManage" prefHeight="26.0" prefWidth="146.0" text="Employee Management" />
     </children>
 </AnchorPane>

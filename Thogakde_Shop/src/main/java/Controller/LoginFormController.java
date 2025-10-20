@@ -31,7 +31,7 @@ public class LoginFormController {
        if("Ryan".equals(username)&& "1234".equals(password)){
            System.out.println("Valid User");
            try {
-               stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/DashboardForm.fxml"))));
+               stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/management_form.fxml"))));
            } catch (IOException e) {
                throw new RuntimeException(e);
            }
