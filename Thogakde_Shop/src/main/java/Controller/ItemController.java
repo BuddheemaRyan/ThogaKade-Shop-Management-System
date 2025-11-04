@@ -1,14 +1,15 @@
 package Controller;
 
+import db.DBConnection;
 import javafx.collections.ObservableList;
 import model.dto.ItemDTO;
 
 import java.sql.*;
 
-public class ItemController {
+public class ItemController implements ItemService{
     public void addItem(String itemCode, String description, String category, int qtyOnHand, double unitPrice) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
 
             String sql = "INSERT INTO Item VALUES (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -28,7 +29,7 @@ public class ItemController {
 
     public void updateItem(String itemCode, String description, String category, int qtyOnHand, double unitPrice) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
 
             String sql = "UPDATE Item SET Description=?, Category=?, QtyOnHand=?, UnitPrice=? WHERE ItemCode=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -48,7 +49,7 @@ public class ItemController {
 
     public void deleteItem(String itemCode) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Item WHERE ItemCode=?");
             preparedStatement.setObject(1,itemCode);
             preparedStatement.executeUpdate();
@@ -63,7 +64,7 @@ public class ItemController {
         ObservableList<ItemDTO> itemList = javafx.collections.FXCollections.observableArrayList();
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Item");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

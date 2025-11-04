@@ -23,6 +23,9 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
+
+    CustomerService customerService = new CustomerController ();
+
     ObservableList<CustomerDTO> customerInfoArray = FXCollections.observableArrayList();
 
 

@@ -1,15 +1,16 @@
 package Controller;
 
+import db.DBConnection;
 import javafx.collections.ObservableList;
 import model.dto.SupplierDTO;
 
 import java.sql.*;
 
-public class SuppplierController {
+public class SupplierController implements SupplierService {
     public void addSupplier(String supplierId, String name, String companyName, String address, String city, String province, String postalCode, String phone, String email) {
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             String sql = "INSERT INTO Supplier Values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -32,7 +33,7 @@ public class SuppplierController {
 
     public void deleteSupplier(String supplierId) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM Supplier WHERE SupplierId=?");
             preparedStatement.setObject(1, supplierId);
             preparedStatement.executeUpdate();
@@ -44,7 +45,7 @@ public class SuppplierController {
 
     public void updateSupplier(String supplierId, String name, String companyName, String address, String city, String province, String postalCode, String phone, String email) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             String sql = "UPDATE Supplier SET Name=?, CompanyName=?, Address=?, City=?, Province=?, PostalCode=?, Phone=?, Email=? WHERE SupplierId=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, name);
@@ -63,10 +64,10 @@ public class SuppplierController {
         }
     }
 
-    public ObservableList<SupplierDTO> getAllSuppliers() {
+        public ObservableList<SupplierDTO> getAllSuppliers() {
         ObservableList<SupplierDTO> supplierList = javafx.collections.FXCollections.observableArrayList();
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Supplier");
             ResultSet resultSet = preparedStatement.executeQuery();
 

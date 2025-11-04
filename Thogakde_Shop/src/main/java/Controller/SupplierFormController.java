@@ -13,10 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.SupplierDTO;
 
 import java.net.URL;
-import java.sql.*;
 import java.util.ResourceBundle;
 
 public class SupplierFormController implements Initializable {
+    SupplierService supplierService = new SupplierController();
     ObservableList<SupplierDTO> supplierInfoArray = FXCollections.observableArrayList(
 
     );
@@ -89,8 +89,8 @@ public class SupplierFormController implements Initializable {
         String phone = txtPhone.getText();
         String email = txtEmail.getText();
 
-        SuppplierController suppplierController = new SuppplierController();
-        suppplierController.addSupplier(supplierId, name, companyName, address, city, province, postalCode, phone, email);
+        SupplierController supplierController = new SupplierController();
+        supplierController.addSupplier(supplierId, name, companyName, address, city, province, postalCode, phone, email);
 
         loadSupplierDetails();
         clearFeilds();
@@ -106,8 +106,8 @@ public class SupplierFormController implements Initializable {
     @FXML
     void btnDelete(ActionEvent event) {
 
-        SuppplierController suppplierController = new SuppplierController();
-        suppplierController.deleteSupplier(txtSupId.getText());
+        SupplierController supplierController = new SupplierController();
+        supplierController.deleteSupplier(txtSupId.getText());
 
 
         clearFeilds();
@@ -127,8 +127,8 @@ public class SupplierFormController implements Initializable {
 
     @FXML
     void btnUpdate(ActionEvent event) {
-        SuppplierController suppplierController = new SuppplierController();
-        suppplierController.updateSupplier(txtSupId.getText(),
+        SupplierController supplierController = new SupplierController();
+        supplierController.updateSupplier(txtSupId.getText(),
                 txtName.getText(),
                 txtCompanyName.getText(),
                 txtAddress.getText(),
@@ -193,10 +193,10 @@ public class SupplierFormController implements Initializable {
     private void loadSupplierDetails() {
         supplierInfoArray.clear();
 
-        SuppplierController suppplierController = new SuppplierController();
+        SupplierController supplierController = new SupplierController();
 
 
-        tblSupplier.setItems(suppplierController.getAllSuppliers());
+        tblSupplier.setItems(supplierController.getAllSuppliers());
 
     }
 

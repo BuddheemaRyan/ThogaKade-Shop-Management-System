@@ -22,33 +22,34 @@ public class LoginController {
     @FXML
     void btnLogin(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        String username =txtUserName.getText();
+        String username = txtUserName.getText();
         String password = txtPassword.getText();
 
-        System.out.println("Username :"+username);
-        System.out.println("Password :"+password);
+        System.out.println("Username :" + username);
+        System.out.println("Password :" + password);
 
-       if("Ryan".equals(username)&& "1234".equals(password)){
-           System.out.println("Valid User");
-           try {
-               stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/View/management_form.fxml"))));
-           } catch (IOException e) {
-               throw new RuntimeException(e);
-           }
-           stage.setTitle("Dashboard");
-           stage.show();
-       }else{
-           System.out.println("invalid User");
+        if ("Ryan".equals(username) && "1234".equals(password)) {
+            System.out.println("Valid User");
+            try {
+                stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/management_form.fxml"))));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setTitle("Dashboard");
+            stage.show();
+        } else {
 
-           Alert alert = new Alert(Alert.AlertType.ERROR);
-           alert.setTitle("Error");
-           alert.setHeaderText("Invalid User");
-           alert.setContentText("Please enter valid user name and password");
-           alert.showAndWait();
+            System.out.println("invalid User");
 
-           txtUserName.setText("");
-           txtPassword.setText("");
-       }
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid User");
+            alert.setContentText("Please enter valid user name and password");
+            alert.showAndWait();
+
+            txtUserName.setText("");
+            txtPassword.setText("");
+        }
 
     }
 

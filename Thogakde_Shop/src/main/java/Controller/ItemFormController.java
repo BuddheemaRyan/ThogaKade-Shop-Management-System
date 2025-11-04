@@ -16,6 +16,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
+    ItemService itemService = new ItemController();
     ObservableList<ItemDTO> itemInfoArray = FXCollections.observableArrayList();
 
     @FXML

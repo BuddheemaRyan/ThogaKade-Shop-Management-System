@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class EmployeeFormManagement implements Initializable {
+    EmployeeService employeeService = new EmployeeController();
     ObservableList<EmployeeDTO> employeeList = FXCollections.observableArrayList();
 
 

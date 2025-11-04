@@ -1,16 +1,17 @@
 package Controller;
 
 import com.mysql.cj.exceptions.CJConnectionFeatureNotAvailableException;
+import db.DBConnection;
 import javafx.collections.ObservableList;
 import model.dto.EmployeeDTO;
 
 import javax.xml.namespace.QName;
 import java.sql.*;
 
-public class EmployeeController {
+public class EmployeeController implements  EmployeeService{
     public void addEmployee(String employeeId, String name, String nic, String dob, String position, double salary, String contactNumber, String address, String joinedDate, String status) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             String sql = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setObject(1, employeeId);
@@ -31,7 +32,7 @@ public class EmployeeController {
 
     public void deleteEmployee(String employeeId) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement pstm = connection.prepareStatement("DELETE FROM Employee WHERE EmployeeID=?");
             pstm.setObject(1,employeeId);
             pstm.executeUpdate();
@@ -43,7 +44,7 @@ public class EmployeeController {
 
     public void updateEmployee(String name, String employeeId, String nic, String dob, String position, double salary, String contactNumber, String address, String joinedDate, String status) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             String sql = "UPDATE Employee SET Name=?, NIC=?, DateOfBirth=?, Position=?, Salary=?, ContactNumber=?, Address=?, JoinedDate=?, Status=? WHERE EmployeeID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -69,7 +70,7 @@ public class EmployeeController {
     public ObservableList<EmployeeDTO> getAllEmployees(){
         ObservableList<EmployeeDTO> employeeList = javafx.collections.FXCollections.observableArrayList();
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Togakademanagement", "root", "1234");
+            Connection connection = DBConnection.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Employee");
             ResultSet resultSet = preparedStatement.executeQuery();
 
