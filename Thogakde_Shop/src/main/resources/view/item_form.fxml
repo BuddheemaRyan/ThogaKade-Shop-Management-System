@@ -8,62 +8,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="520.0" prefWidth="903.0" style="-fx-background-color: black;"
-            xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.ItemController">
+<AnchorPane prefHeight="520.0" prefWidth="903.0" style="-fx-background-color: #222831;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ItemFormController">
 
     <children>
 
 
-        <Button layoutX="35.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0"
-                prefWidth="91.0" style="-fx-background-color: cyan;" text="ADD">
+        <Button layoutX="35.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: cyan;" text="ADD">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button layoutX="137.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="26.0"
-                prefWidth="91.0" style="-fx-background-color: #49fc03;" text="UPDATE">
+        <Button layoutX="137.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #49fc03;" text="UPDATE">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button layoutX="235.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="26.0"
-                prefWidth="91.0" style="-fx-background-color: red;" text="DELETE">
+        <Button layoutX="235.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: red;" text="DELETE">
             <font>
-                <Font name="System Bold" size="12.0"/>
+                <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button layoutX="422.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnCustomerManage" prefHeight="26.0"
-                prefWidth="146.0" style="-fx-background-color: #03dffc;" text="Customer Management"/>
-        <Button layoutX="576.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnSupplierManage" prefHeight="26.0"
-                prefWidth="138.0" style="-fx-background-color: #03dffc;" text="Supplier Management"/>
-        <Button layoutX="722.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnEmployeeManage" prefHeight="26.0"
-                prefWidth="146.0" style="-fx-background-color: #03dffc;" text="Employee Management"/>
+        <Button layoutX="422.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnCustomerManage" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #A3B087;" text="Customer Management" />
+        <Button layoutX="576.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnSupplierManage" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #A3B087;" text="Supplier Management" />
+        <Button layoutX="722.0" layoutY="469.0" mnemonicParsing="false" onAction="#btnEmployeeManage" prefHeight="26.0" prefWidth="146.0" style="-fx-background-color: #A3B087;" text="Employee Management" />
         <Label layoutX="385.0" layoutY="26.0" text="Item Form" textFill="WHITE">
             <font>
-                <Font size="23.0"/>
+                <Font size="23.0" />
             </font>
         </Label>
-        <TableView fx:id="tblItem" layoutX="35.0" layoutY="82.0" prefHeight="314.0" prefWidth="834.0"
-                   style="-fx-background-color: grey;">
+        <TableView fx:id="tblItem" layoutX="35.0" layoutY="82.0" prefHeight="314.0" prefWidth="834.0" style="-fx-background-color: grey;">
             <columns>
-                <TableColumn fx:id="col_item_code" prefWidth="75.0" text="Item Code"/>
-                <TableColumn fx:id="col_description" prefWidth="326.40006256103516" text="Description"/>
-                <TableColumn fx:id="col_category" prefWidth="163.99990844726562" text="Category"/>
-                <TableColumn fx:id="col_qty_on_hand" prefWidth="171.20001220703125" text="Quantity available in stock"/>
-                <TableColumn fx:id="col_unit_price" prefWidth="101.5999755859375" text="Unit Price"/>
+                <TableColumn fx:id="col_item_code" prefWidth="75.0" text="Item Code" />
+                <TableColumn fx:id="col_description" prefWidth="326.40006256103516" text="Description" />
+                <TableColumn fx:id="col_category" prefWidth="163.99990844726562" text="Category" />
+                <TableColumn fx:id="col_qty_on_hand" prefWidth="171.20001220703125" text="Quantity available in stock" />
+                <TableColumn fx:id="col_unit_price" prefWidth="101.5999755859375" text="Unit Price" />
             </columns>
         </TableView>
-        <TextField fx:id="txtItemCode" layoutX="35.0" layoutY="423.0" prefHeight="26.0" prefWidth="91.0"
-                   promptText="Item Code" style="-fx-background-color: grey;"/>
-        <TextField fx:id="txtDescription" layoutX="137.0" layoutY="423.0" prefHeight="26.0" prefWidth="288.0"
-                   promptText="Description" style="-fx-background-color: grey;"/>
-        <TextField fx:id="txtCategory" layoutX="437.0" layoutY="424.0" promptText="Category"
-                   style="-fx-background-color: grey;"/>
-        <TextField fx:id="txtQtyOnHand" layoutX="598.0" layoutY="424.0" promptText="Qty On Hand"
-                   style="-fx-background-color: grey;"/>
-        <TextField fx:id="txtUnitPrice" layoutX="763.0" layoutY="423.0" prefHeight="26.0" prefWidth="105.0"
-                   promptText="Unit Price" style="-fx-background-color: grey;"/>
+        <TextField fx:id="txtItemCode" layoutX="35.0" layoutY="423.0" prefHeight="26.0" prefWidth="91.0" promptText="Item Code" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtDescription" layoutX="137.0" layoutY="423.0" prefHeight="26.0" prefWidth="288.0" promptText="Description" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtCategory" layoutX="437.0" layoutY="424.0" promptText="Category" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtQtyOnHand" layoutX="598.0" layoutY="424.0" promptText="Qty On Hand" style="-fx-background-color: grey;" />
+        <TextField fx:id="txtUnitPrice" layoutX="763.0" layoutY="423.0" prefHeight="26.0" prefWidth="105.0" promptText="Unit Price" style="-fx-background-color: grey;" />
 
     </children>
 

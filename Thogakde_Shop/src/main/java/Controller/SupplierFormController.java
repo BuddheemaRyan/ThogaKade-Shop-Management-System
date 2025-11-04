@@ -13,16 +13,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.SupplierDTO;
 
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
-import java.util.function.Supplier;
 
-public class SupplierController implements Initializable {
-    ObservableList<SupplierDTO> supplierInfoArray= FXCollections.observableArrayList(
-            new SupplierDTO("S001", "Ruwan Perera", "Lanka Traders", "45 Main Street", "Colombo", "Western", "00100", "071-2345678", "info@lankatraders.lk"),
-            new SupplierDTO("S002", "Nadeesha Silva", "Sunrise Distributors", "12 Temple Road", "Kandy", "Central", "20000", "071-3456789", "sales@sunrise.lk"),
-            new SupplierDTO("S003", "Kamal Fernando", "Evergreen Supplies", "78 Galle Road", "Matara", "Southern", "81000", "071-4567890", "contact@evergreen.lk"),
-            new SupplierDTO("S004", "Thilini Jayawardena", "Highland Imports", "23 Lake View", "Kurunegala", "North Western", "60000", "071-5678901", "support@highland.lk"),
-            new SupplierDTO("S005", "Ashan Ranasinghe", "Royal Foods", "56 Beach Road", "Negombo", "Western", "11500", "071-6789012", "royalfoods@gmail.com")
+public class SupplierFormController implements Initializable {
+    ObservableList<SupplierDTO> supplierInfoArray = FXCollections.observableArrayList(
 
     );
     @FXML
@@ -65,7 +60,7 @@ public class SupplierController implements Initializable {
     private TextField txtCompanyName;
 
     @FXML
-    private TextField txtEMail;
+    private TextField txtEmail;
 
     @FXML
     private TextField txtName;
@@ -84,18 +79,23 @@ public class SupplierController implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        String supplierId=txtSupId.getText();
-        String name=txtName.getText();
-        String companyName=txtCompanyName.getText();
-        String address=txtAddress.getText();
-        String city=txtCity.getText();
-        String province=txtProvince.getValue().toString();
-        String postalCode=txtPostalCode.getText();
-        String phone=txtPhone.getText();
-        String email=txtEMail.getText();
+        String supplierId = txtSupId.getText();
+        String name = txtName.getText();
+        String companyName = txtCompanyName.getText();
+        String address = txtAddress.getText();
+        String city = txtCity.getText();
+        String province = txtProvince.getValue().toString();
+        String postalCode = txtPostalCode.getText();
+        String phone = txtPhone.getText();
+        String email = txtEmail.getText();
 
-        SupplierDTO supplierInfo=new SupplierDTO(supplierId,name,companyName,address,city,province,postalCode,phone,email);
-        supplierInfoArray.add(supplierInfo);
+        SuppplierController suppplierController = new SuppplierController();
+        suppplierController.addSupplier(supplierId, name, companyName, address, city, province, postalCode, phone, email);
+
+        loadSupplierDetails();
+        clearFeilds();
+
+
     }
 
     @FXML
@@ -105,9 +105,14 @@ public class SupplierController implements Initializable {
 
     @FXML
     void btnDelete(ActionEvent event) {
-        SupplierDTO selectedInfo= tblSupplier.getSelectionModel().getSelectedItem();
-        supplierInfoArray.remove(selectedInfo);
-        tblSupplier.refresh();
+
+        SuppplierController suppplierController = new SuppplierController();
+        suppplierController.deleteSupplier(txtSupId.getText());
+
+
+        clearFeilds();
+        loadSupplierDetails();
+
     }
 
     @FXML
@@ -122,19 +127,22 @@ public class SupplierController implements Initializable {
 
     @FXML
     void btnUpdate(ActionEvent event) {
-        SupplierDTO supplierInfo=tblSupplier.getSelectionModel().getSelectedItem();
+        SuppplierController suppplierController = new SuppplierController();
+        suppplierController.updateSupplier(txtSupId.getText(),
+                txtName.getText(),
+                txtCompanyName.getText(),
+                txtAddress.getText(),
+                txtCity.getText(),
+                txtProvince.getValue().toString(),
+                txtPostalCode.getText(),
+                txtPhone.getText(),
+                txtEmail.getText()
+        );
 
-        supplierInfo.setSupplierId(txtSupId.getText());
-        supplierInfo.setName(txtName.getText());
-        supplierInfo.setAddress(txtAddress.getText());
-        supplierInfo.setCity(txtCity.getText());
-        supplierInfo.setEmail(txtEMail.getText());
-        supplierInfo.setPhone(txtPhone.getText());
-        supplierInfo.setCompanyName(txtCompanyName.getText());
-        supplierInfo.setPostalCode(txtPostalCode.getText());
-        supplierInfo.setProvince(txtProvince.getValue().toString());
+        clearFeilds();
+        loadSupplierDetails();
 
-        tblSupplier.refresh();
+
     }
 
     @Override
@@ -149,10 +157,10 @@ public class SupplierController implements Initializable {
         col_phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        tblSupplier.setItems(supplierInfoArray);
+        loadSupplierDetails();
 
         tblSupplier.getSelectionModel().selectedItemProperty().addListener((observableValue, supplierInfoDto, t1) -> {
-            if (t1!=null){
+            if (t1 != null) {
                 txtSupId.setText(t1.getSupplierId());
                 txtName.setText(t1.getName());
                 txtCompanyName.setText(t1.getCompanyName());
@@ -161,7 +169,7 @@ public class SupplierController implements Initializable {
                 txtProvince.setValue(t1.getProvince());
                 txtPostalCode.setText(t1.getPostalCode());
                 txtPhone.setText(t1.getPhone());
-                txtEMail.setText(t1.getEmail());
+                txtEmail.setText(t1.getEmail());
             }
         });
 
@@ -179,5 +187,29 @@ public class SupplierController implements Initializable {
 
         // default value
         txtProvince.setValue("Western");
+
     }
+
+    private void loadSupplierDetails() {
+        supplierInfoArray.clear();
+
+        SuppplierController suppplierController = new SuppplierController();
+
+
+        tblSupplier.setItems(suppplierController.getAllSuppliers());
+
+    }
+
+    public void clearFeilds() {
+        txtSupId.clear();
+        txtName.clear();
+        txtCompanyName.clear();
+        txtAddress.clear();
+        txtCity.clear();
+        txtProvince.setValue(null);
+        txtPostalCode.clear();
+        txtPhone.clear();
+        txtEmail.clear();
+    }
+
 }

@@ -13,18 +13,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.EmployeeDTO;
 
 import java.net.URL;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class EmployeeManagement implements Initializable {
-    ObservableList<EmployeeDTO> employeeList = FXCollections.observableArrayList(
-            new EmployeeDTO("E001", "Anura Perera", "NIT12345", "1988-04-12", "Manager", 85000.00, "071-1234567", "12 Main Mawatha, Colombo", "2015-06-01", "Sakriya"),
-            new EmployeeDTO("E002", "Kavindu Jayasinghe", "NIT23456", "1992-09-25", "Software Developer", 72000.00, "071-2345678", "45 Temple Road, Kandy", "2018-03-12", "Sakriya"),
-            new EmployeeDTO("E003", "Nimali Silva", "NIT34567", "1985-01-30", "HR Officer", 65000.00, "071-3456789", "89 Galle Road, Matara", "2016-09-20", "Nisakriya"),
-            new EmployeeDTO("E004", "Sampath Fernando", "NIT45678", "1990-07-18", "Accountant", 70000.00, "071-4567890", "23 Lake View, Kurunegala", "2017-11-05", "Sakriya"),
-            new EmployeeDTO("E005", "Tharushi Ranasinghe", "NIT56789", "1995-12-02", "Graphic Designer", 68000.00, "071-5678901", "56 Beach Road, Negombo", "2020-01-15", "Sakriya")
+public class EmployeeFormManagement implements Initializable {
+    ObservableList<EmployeeDTO> employeeList = FXCollections.observableArrayList();
 
-    );
 
     @FXML
     private TableColumn<?, ?> col_DOB;
@@ -93,17 +88,20 @@ public class EmployeeManagement implements Initializable {
     void btnAdd(ActionEvent event) {
         String employeeId = txtEmpId.getText();
         String name = txtName.getText();
-        String nic= txtNic.getText();
+        String nic = txtNic.getText();
         String dob = txtDOB.getValue().toString();
-        String position =txtPosition.getText();
-        double salary =Double.parseDouble(txtSalary.getText());
-        String contactNUmber =txtContactNo.getText();
-        String address =txtAddress.getText();
-        String joinedDate =txtJoinedDate.getValue().toString();
-        String status =txtStatus.getText();
+        String position = txtPosition.getText();
+        double salary = Double.parseDouble(txtSalary.getText());
+        String contactNumber = txtContactNo.getText();
+        String address = txtAddress.getText();
+        String joinedDate = txtJoinedDate.getValue().toString();
+        String status = txtStatus.getText();
 
-        EmployeeDTO newEmployee = new EmployeeDTO(employeeId, name, nic, dob, position, salary, contactNUmber, address, joinedDate, status);
-        employeeList.add(newEmployee);
+        EmployeeController employeeController = new EmployeeController();
+        employeeController.addEmployee(employeeId, name, nic, dob, position, salary, contactNumber, address, joinedDate, status);
+
+        loadEmployeeDetails();
+        clearFields();
     }
 
     @FXML
@@ -113,7 +111,10 @@ public class EmployeeManagement implements Initializable {
 
     @FXML
     void btnDelete(ActionEvent event) {
-
+        EmployeeController employeeController = new EmployeeController();
+        employeeController.deleteEmployee(txtEmpId.getText());
+        clearFields();
+        loadEmployeeDetails();
     }
 
     @FXML
@@ -128,18 +129,12 @@ public class EmployeeManagement implements Initializable {
 
     @FXML
     void btnUpdate(ActionEvent event) {
-        EmployeeDTO employeeInfo =  tblEmployee.getSelectionModel().getSelectedItem();
-        employeeInfo.setName(txtName.getText());
-        employeeInfo.setEmployeeId(txtEmpId.getText());
-        employeeInfo.setDob(txtDOB.getValue().toString());
-        employeeInfo.setNic(txtNic.getText());
-        employeeInfo.setAddress(txtAddress.getText());
-        employeeInfo.setSalary(Double.parseDouble(txtSalary.getText()));
-        employeeInfo.setStatus(txtStatus.getText());
-        employeeInfo.setPosition(txtPosition.getText());
-        employeeInfo.setJoinedDate(txtJoinedDate.getValue().toString());
-        employeeInfo.setContactNumber(txtContactNo.getText());
-        tblEmployee.refresh();
+        EmployeeController employeeController = new EmployeeController();
+        employeeController.updateEmployee(txtName.getText(), txtEmpId.getText(), txtNic.getText(), txtDOB.getValue().toString(), txtPosition.getText(),
+                Double.parseDouble(txtSalary.getText()), txtContactNo.getText(), txtAddress.getText(),txtJoinedDate.getValue().toString(), txtStatus.getText());
+
+        clearFields();
+        loadEmployeeDetails();
     }
 
     @Override
@@ -156,11 +151,11 @@ public class EmployeeManagement implements Initializable {
         col_joined_date.setCellValueFactory(new PropertyValueFactory<>("joinedDate"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        tblEmployee.setItems(employeeList);
+        loadEmployeeDetails();
 
         tblEmployee.getSelectionModel().selectedItemProperty().addListener((observableValue, employeeInfoDto, t1) -> {
 
-            if (t1!=null){
+            if (t1 != null) {
                 txtEmpId.setText(t1.getEmployeeId());
                 txtName.setText(t1.getName());
                 txtNic.setText(t1.getNic());
@@ -174,4 +169,27 @@ public class EmployeeManagement implements Initializable {
             }
         });
     }
+
+    private void loadEmployeeDetails() {
+        employeeList.clear();
+
+       EmployeeController employeeController = new EmployeeController();
+
+        tblEmployee.setItems(employeeController.getAllEmployees());
+
+    }
+
+    public void clearFields() {
+        txtEmpId.clear();
+        txtName.clear();
+        txtNic.clear();
+        txtDOB.setValue(null);
+        txtPosition.clear();
+        txtSalary.clear();
+        txtContactNo.clear();
+        txtAddress.clear();
+        txtJoinedDate.setValue(null);
+        txtStatus.clear();
+    }
+
 }
