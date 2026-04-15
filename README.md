@@ -104,6 +104,7 @@ mvn javafx:run
 | MySQL Connector/J | 9.4.0   |
 
 ---
+## License
 
 ## 🙌 Author
 
