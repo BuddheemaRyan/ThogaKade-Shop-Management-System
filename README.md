@@ -18,7 +18,7 @@ This is a standalone application that automates the operations of a store.
 
 ## 📋 Features
 
-- 🔐 **Login System** – Secure authentication for shop staff
+- 🔐 **Login System** – Secure authentication for shop staff by using email and password
 - 👥 **Customer Management** – Add, view, update, and delete customer records
 - 🧑‍💼 **Employee Management** – Manage employee information
 - 📦 **Item Management** – Track inventory items and their details
