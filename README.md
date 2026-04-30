@@ -106,7 +106,7 @@ mvn javafx:run
 
 ---
 ## License
-This project is for educational purposes.
+This project is for educational purposes.and learing purpose
 
 ## 🙌 Author
 
