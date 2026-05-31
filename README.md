@@ -1,6 +1,6 @@
 # 🛒 ThogaKade Shop Management System
 
-A desktop-based shop management application built with Java and JavaFX, designed to manage customers, employees, items, and suppliers for a retail store.
+A desktop-based shop management application built with Java and Java FX, designed to manage customers, employees, items, and suppliers for a retail store.
 This is a standalone application that automates the operations of a store.
 
 ---
